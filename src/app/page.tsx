@@ -77,7 +77,6 @@ export default function Home() {
       <div className="flex w-full py-20 bg-gray-200">
         <div className="flex flex-1 items-center">
           <div>
-            {" "}
             <Image
               src={HeroImage2}
               width={959}
