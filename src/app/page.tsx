@@ -1,15 +1,19 @@
 "use client";
 import * as Toolbar from "@radix-ui/react-toolbar";
 import * as Switch from "@radix-ui/react-switch";
+import { Button } from "@radix-ui/themes";
 import Image from "next/image";
 import ReezumeLogo from "../../public/logo_reezume.jpg";
 import HeroImage1 from "../../public/Image1.png";
 import HeroImage2 from "../../public/ser-feliz-en-el-trabajo.jpg";
-import { Button } from "@radix-ui/themes";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+  const navigateToForm = () => router.push("/form");
+
   return (
-    // Navbar
+    /* Navbar */
     <main className="flex min-h-screen flex-col items-center">
       <Toolbar.Root
         className="flex p-[10px] w-full min-w-max bg-zinc-200 shadow-[0_2px_10px] shadow-blackA7"
@@ -43,6 +47,7 @@ export default function Home() {
         <Toolbar.Button
           className="mx-[100px] text-white bg-rose-500  font-medium flex-shrink-0 flex-grow-0 basis-auto h-[40px] w-[140px] rounded inline-flex text-[13px] leading-none items-center justify-center outline-none hover:bg-rose-400 focus:relative focus:shadow-[0_0_0_2px] focus:shadow-violet7"
           style={{ marginLeft: "auto" }}
+          onClick={navigateToForm}
         >
           Create Resume
         </Toolbar.Button>
@@ -57,7 +62,7 @@ export default function Home() {
               <b>Start writing your resume.</b>
             </p>
             <div className="w-2/3">
-              <Button size="4" color="ruby">
+              <Button size="4" color="ruby" onClick={navigateToForm}>
                 Create your Resume
               </Button>
             </div>
@@ -94,7 +99,7 @@ export default function Home() {
               <b>Create your resume in minutes.</b>
             </p>
             <div className="w-2/3">
-              <Button size="4" color="ruby">
+              <Button size="4" color="ruby" onClick={navigateToForm}>
                 Create now
               </Button>
             </div>
