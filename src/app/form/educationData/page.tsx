@@ -35,34 +35,30 @@ export default function additionalData() {
             />
           </Form.Control>
         </Form.Field>
-        <div className="flex justify-between">
-          {" "}
-          <Form.Field name="start-date" className="pb-2">
-            <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
-              Start Date
-            </Form.Label>
-            <Form.Control asChild>
-              <input
-                className="box-border bg-transparent shadow-white inline-flex h-[35px] appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white"
-                type="date"
-                required
-              />
-            </Form.Control>
-          </Form.Field>
-          <Form.Field name="end-date" className="pb-5">
-            <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
-              End Date
-            </Form.Label>
-            <Form.Control asChild>
-              <input
-                className="box-border bg-transparent shadow-white inline-flex h-[35px] appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white"
-                type="date"
-                required
-              />
-            </Form.Control>
-          </Form.Field>
-        </div>
-
+        <Form.Field name="start-date" className="pb-2">
+          <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
+            Start Date
+          </Form.Label>
+          <Form.Control asChild>
+            <input
+              className="box-border bg-transparent shadow-white inline-flex h-[35px] appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white"
+              type="date"
+              required
+            />
+          </Form.Control>
+        </Form.Field>
+        <Form.Field name="end-date" className="pb-5">
+          <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
+            End Date
+          </Form.Label>
+          <Form.Control asChild>
+            <input
+              className="box-border bg-transparent shadow-white inline-flex h-[35px] appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white"
+              type="date"
+              required
+            />
+          </Form.Control>
+        </Form.Field>
         {/* éste button no está dentro del form.submit */}
         <div className="flex justify-between">
           <button className="box-border bg-gray-400 text-white shadow-blackA7 hover:bg-gray-300 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]">
