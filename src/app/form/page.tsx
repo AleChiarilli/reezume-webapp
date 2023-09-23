@@ -18,7 +18,7 @@ export default function GetStartedStep() {
           <Form.Control asChild>
             <input
               className="box-border w-full bg-transparent shadow-white inline-flex h-[35px] appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white"
-              type="name"
+              type="text"
               required
               placeholder="John Doe"
             />
@@ -31,20 +31,20 @@ export default function GetStartedStep() {
           <Form.Control asChild>
             <input
               className="box-border w-full bg-transparent shadow-white inline-flex h-[35px] appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white"
-              type="profession"
+              type="text"
               required
               placeholder="Web developer"
             />
           </Form.Control>
         </Form.Field>
-        <Form.Field name="name" className="py-5">
+        <Form.Field name="about" className="py-5">
           <Form.Label className="text-[15px] font-medium leading-[35px]  text-white">
             About you
           </Form.Label>
           <Form.Control asChild>
             <input
               className="box-border w-full bg-transparent shadow-white inline-flex h-[90px] appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white"
-              type="name"
+              type="text"
               required
               placeholder="Little bio"
             />
