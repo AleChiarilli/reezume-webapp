@@ -23,13 +23,14 @@ export default function Stepper() {
   const pathname = usePathname();
 
   return (
-    <div className="flex justify-between pt-36 w-60 text-white font-bold drop-shadow-lg">
+    <div className="flex justify-between pt-36 w-72 text-white font-bold drop-shadow-lg">
       <StepElement isActive={pathname === "/form"}>1</StepElement>
       <StepElement isActive={pathname === "/form/professionalExperience"}>
         2
       </StepElement>
+      <StepElement isActive={pathname === "/form/educationData"}>3</StepElement>
       <StepElement isActive={pathname === "/form/additionalData"}>
-        3
+        4
       </StepElement>
     </div>
   );
