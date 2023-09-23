@@ -8,9 +8,9 @@ export default function CreateCVForm({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex flex-col h-screen w-full items-center gradient-bg">
+    <section className="flex flex-col h-screen w-full items-center overflow-scroll gradient-bg">
       <Stepper />
-      <div className="flex flex-col">{children}</div>
+      <div className="flex flex-col mb-12">{children}</div>
     </section>
   );
 }
