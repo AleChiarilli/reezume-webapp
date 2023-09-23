@@ -4,8 +4,14 @@ import * as Form from "@radix-ui/react-form";
 export default function GetStartedStep() {
   return (
     <div className="flex flex-col justify-center align-middle">
+      <div className="w-56 mt-5 text-white text-base font-normal leading-relaxed">
+        Let´s start with basics...
+      </div>
+      <div className="w-60 text-white text-xl font-bold">
+        Personal information
+      </div>
       <Form.Root>
-        <Form.Field name="name" className="pt-10 pb-5">
+        <Form.Field name="name" className="pt-6 pb-5">
           <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
             Name
           </Form.Label>
