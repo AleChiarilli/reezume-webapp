@@ -2,7 +2,7 @@ export default function Resume() {
   return (
     <>
       <div className="grid grid-cols-2">
-        <div className="w-4/5 mt-10 ml-8 bg-blue-200">
+        <div className="w-4/5 mt-10 ml-8">
           lado1
           <h1 className=" text-2xl font-semibold mb-5">Nombre del perfil</h1>
           <h2 className="text-lg mb-10">Web developer</h2>
@@ -74,7 +74,7 @@ export default function Resume() {
           </h2>
           <hr className="mt-2 mb-4 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
           <p>
-            Front end developer with background in tourism and business. React &
+            Front end developer with background in tourism and business. React &
             JavaScript enthusiast.
           </p>
           <hr className="mt-8 mb-2 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
@@ -87,9 +87,55 @@ export default function Resume() {
             JavaScript enthusiast.
           </p>
         </div>
-        <div className="w-5/5 bg-red-200"></div>
+        <div className="mt-10 mr-8 w-5/5">
+          <hr className="mt-8 mb-2 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
+          <h2 className="flex justify-center text-neutral-800 text-base font-medium leading-normal">
+            EDUCATION
+          </h2>
+          <hr className="mt-2 mb-4 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
+          <ul className="grid gap-4">
+            <li className="leading-none text-sm">
+              <h3 className="font-medium">Full Stack developer</h3>
+              <p>05/2023 - 06/2023</p>
+              <p className="ml-10">4Geeks Academy</p>
+            </li>
+            <li className="leading-none text-sm">
+              <h3 className="font-medium">Full Stack developer</h3>
+              <p>05/2023 - 06/2023</p>
+              <p className="ml-10">4Geeks Academy</p>
+            </li>
+            <li className="leading-none text-sm">
+              <h3 className="font-medium">Full Stack developer</h3>
+              <p>05/2023 - 06/2023</p>
+              <p className="ml-10">4Geeks Academy</p>
+            </li>
+          </ul>
+          <hr className="mt-8 mb-2 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
+          <h2 className="flex justify-center text-neutral-800 text-base font-medium leading-normal">
+            EXPERIENCE
+          </h2>
+          <hr className="mt-2 mb-4 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
+          <ul className="grid gap-4">
+            <li className="leading-none text-sm">
+              <h3 className="font-medium">Full Stack developer</h3>
+              <p>05/2023 - 06/2023</p>
+              <p className="ml-10">4Geeks Academy</p>
+            </li>
+            <li className="leading-none text-sm">
+              <h3 className="font-medium">Full Stack developer</h3>
+              <p>05/2023 - 06/2023</p>
+              <p className="ml-10">4Geeks Academy</p>
+            </li>
+            <li className="leading-none text-sm">
+              <h3 className="font-medium">Full Stack developer</h3>
+              <p>05/2023 - 06/2023</p>
+              <p className="ml-10">4Geeks Academy</p>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="w-30 flex flex-col items-center bg-gray-400 text-center">
+      <hr className="mt-6 mb-2 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
+      <div className="w-30 flex flex-col items-center text-center">
         <h2>What moves me on</h2>
         <p>
           Front End developer with background in tourism and business React and
