@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model PersonalInformation {
+  id                Int                      @id @default(autoincrement())
+  cvUuid            String                   @unique
+  name              String
+  profession        String
+  location          String
+  email             String                   @unique
+  phoneNumber       String?
+  summary           String?
+  hobbies           String?
+  shortPresentation String?
+  createdAt         DateTime                 @default(now())
+  updatedAt         DateTime                 @updatedAt
+  experiences       ProfessionalExperience[]
+  education         Education[]
+}
+
+model ProfessionalExperience {
+  id             Int                 @id @default(autoincrement())
+  position       String
+  company        String
+  startDate      DateTime
+  endDate        DateTime?
+  personalInfo   PersonalInformation @relation(fields: [personalInfoId], references: [id])
+  personalInfoId Int
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+}
+
+model Education {
+  id             Int                 @id @default(autoincrement())
+  degree         String
+  institution    String
+  graduationDate DateTime
+  personalInfo   PersonalInformation @relation(fields: [personalInfoId], references: [id])
+  personalInfoId Int
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+}
