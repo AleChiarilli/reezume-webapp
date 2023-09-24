@@ -117,3 +117,13 @@ export async function bulkUpdateExperiences(
   await Promise.allSettled(updates);
   redirect(`educationData`);
 }
+
+export async function getEducationData(cvUuid: string) {
+  return prisma.education.findMany({
+    where: {
+      personalInfo: {
+        cvUuid,
+      },
+    },
+  });
+}
