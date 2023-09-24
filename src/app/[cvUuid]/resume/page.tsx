@@ -1,11 +1,24 @@
-export default function Resume() {
+import {
+  getEducationData,
+  getPersonalData,
+  getProfessionalExperiences,
+} from "../form/actions";
+
+export default async function Resume({
+  params,
+}: {
+  params: { cvUuid: string };
+}) {
+  const personalData = await getPersonalData(params.cvUuid);
+  const experiences = await getProfessionalExperiences(params.cvUuid);
+  const education = await getEducationData(params.cvUuid);
+
   return (
     <>
       <div className="grid grid-cols-2">
         <div className="w-4/5 mt-10 ml-8">
-          lado1
-          <h1 className=" text-2xl font-semibold mb-5">Nombre del perfil</h1>
-          <h2 className="text-lg mb-10">Web developer</h2>
+          <h1 className=" text-2xl font-semibold mb-5">{personalData?.name}</h1>
+          <h2 className="text-lg mb-10">{personalData?.profession}</h2>
           <div className="flex">
             <svg
               width="15"
@@ -22,7 +35,7 @@ export default function Resume() {
                 fill="#5EB0EF"
               />
             </svg>
-            <p>alejandrochiarilli@gmail.com</p>
+            <p>{personalData?.email}</p>
           </div>
           <div className="flex">
             <svg
@@ -40,7 +53,7 @@ export default function Resume() {
                 fill="#5EB0EF"
               />
             </svg>
-            <p>Madrid, Madrid</p>
+            <p>{personalData?.location}</p>
           </div>
           <div className="flex">
             <svg
@@ -66,26 +79,24 @@ export default function Resume() {
                 fill="#5EB0EF"
               />
             </svg>
-            <p>+34 653584038</p>
+            <p>{personalData?.phoneNumber}</p>
           </div>
           <hr className="mt-6 mb-2 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
           <h2 className="flex justify-center text-neutral-800 text-base font-medium leading-normal">
             SHORT BIO
           </h2>
           <hr className="mt-2 mb-4 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
-          <p>
-            Front end developer with background in tourism and business. React &
-            JavaScript enthusiast.
-          </p>
-          <hr className="mt-8 mb-2 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
-          <h2 className="flex justify-center text-neutral-800 text-base font-medium leading-normal">
-            HOBBIES
-          </h2>
-          <hr className="mt-2 mb-4 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
-          <p>
-            Front end developer with background in tourism and business. React &
-            JavaScript enthusiast.
-          </p>
+          <p>{personalData?.summary}</p>
+          {personalData?.hobbies && (
+            <>
+              <hr className="mt-8 mb-2 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
+              <h2 className="flex justify-center text-neutral-800 text-base font-medium leading-normal">
+                HOBBIES
+              </h2>
+              <hr className="mt-2 mb-4 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
+              <p>{personalData.hobbies}</p>
+            </>
+          )}
         </div>
         <div className="mt-10 mr-8 w-5/5">
           <hr className="mt-8 mb-2 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
@@ -94,21 +105,13 @@ export default function Resume() {
           </h2>
           <hr className="mt-2 mb-4 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
           <ul className="grid gap-4">
-            <li className="leading-none text-sm">
-              <h3 className="font-medium">Full Stack developer</h3>
-              <p>05/2023 - 06/2023</p>
-              <p className="ml-10">4Geeks Academy</p>
-            </li>
-            <li className="leading-none text-sm">
-              <h3 className="font-medium">Full Stack developer</h3>
-              <p>05/2023 - 06/2023</p>
-              <p className="ml-10">4Geeks Academy</p>
-            </li>
-            <li className="leading-none text-sm">
-              <h3 className="font-medium">Full Stack developer</h3>
-              <p>05/2023 - 06/2023</p>
-              <p className="ml-10">4Geeks Academy</p>
-            </li>
+            {education.map((ed) => (
+              <li key={ed.id} className="leading-none text-sm">
+                <h3 className="font-medium">{ed.degree}</h3>
+                <p>{ed.graduationDate.toLocaleDateString()}</p>
+                <p className="ml-10">{ed.institution}</p>
+              </li>
+            ))}
           </ul>
           <hr className="mt-8 mb-2 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
           <h2 className="flex justify-center text-neutral-800 text-base font-medium leading-normal">
@@ -116,32 +119,28 @@ export default function Resume() {
           </h2>
           <hr className="mt-2 mb-4 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
           <ul className="grid gap-4">
-            <li className="leading-none text-sm">
-              <h3 className="font-medium">Full Stack developer</h3>
-              <p>05/2023 - 06/2023</p>
-              <p className="ml-10">4Geeks Academy</p>
-            </li>
-            <li className="leading-none text-sm">
-              <h3 className="font-medium">Full Stack developer</h3>
-              <p>05/2023 - 06/2023</p>
-              <p className="ml-10">4Geeks Academy</p>
-            </li>
-            <li className="leading-none text-sm">
-              <h3 className="font-medium">Full Stack developer</h3>
-              <p>05/2023 - 06/2023</p>
-              <p className="ml-10">4Geeks Academy</p>
-            </li>
+            {experiences.map((exp) => (
+              <li key={exp.id} className="leading-none text-sm">
+                <h3 className="font-medium">{exp.position}</h3>
+                <p>
+                  {exp.startDate.toLocaleDateString()} -{" "}
+                  {exp.endDate?.toLocaleDateString() ?? "Currently"}
+                </p>
+                <p className="ml-10">{exp.company}</p>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
-      <hr className="mt-6 mb-2 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
-      <div className="w-30 flex flex-col items-center text-center">
-        <h2>What moves me on</h2>
-        <p>
-          Front End developer with background in tourism and business React and
-          JS enthusiast.
-        </p>
-      </div>
+      {personalData?.shortPresentation && (
+        <>
+          <hr className="mt-6 mb-2 h-0.5 border-t-0 bg-blue-300 opacity-100 dark:opacity-50" />
+          <div className="w-30 flex flex-col items-center text-center">
+            <h2>What moves me on</h2>
+            <p>{personalData.shortPresentation}</p>
+          </div>
+        </>
+      )}
     </>
   );
 }
