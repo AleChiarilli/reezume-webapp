@@ -4,14 +4,19 @@ import { createPersonalData, getPersonalData } from "../actions";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 
 export default function ClientPersonalDataForm({
+  params,
   personalData,
 }: {
+  params: { cvUuid: string };
   personalData: Awaited<ReturnType<typeof getPersonalData>>;
 }) {
   const { pending } = useFormStatus();
-  console.log(personalData);
+
+  const handleFormDataSubmit = (formData: FormData) =>
+    createPersonalData(formData, params.cvUuid);
+
   return (
-    <Form.Root action={createPersonalData}>
+    <Form.Root action={handleFormDataSubmit}>
       <Form.Field name="name" className="pt-6 2">
         <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
           Name
@@ -36,6 +41,7 @@ export default function ClientPersonalDataForm({
             type="text"
             required
             placeholder="Web developer"
+            defaultValue={personalData?.profession ?? ""}
           />
         </Form.Control>
       </Form.Field>
@@ -49,6 +55,7 @@ export default function ClientPersonalDataForm({
             type="text"
             required
             placeholder="Madrid"
+            defaultValue={personalData?.location ?? ""}
           />
         </Form.Control>
       </Form.Field>
@@ -62,6 +69,7 @@ export default function ClientPersonalDataForm({
             type="email"
             required
             placeholder="example@gmail.es"
+            defaultValue={personalData?.email ?? ""}
           />
         </Form.Control>
       </Form.Field>
@@ -75,6 +83,7 @@ export default function ClientPersonalDataForm({
             type="number"
             required
             placeholder="1-234-56789"
+            defaultValue={personalData?.phoneNumber ?? ""}
           />
         </Form.Control>
       </Form.Field>
@@ -88,6 +97,7 @@ export default function ClientPersonalDataForm({
             type="text"
             required
             placeholder="Little bio"
+            defaultValue={personalData?.summary ?? ""}
           />
         </Form.Control>
       </Form.Field>

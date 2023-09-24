@@ -8,8 +8,8 @@ import "@radix-ui/themes/styles.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Reezume",
-  description: "Kickstart your career with Reezume CV generator!",
+  title: "Reezume | easy resume generator",
+  description: "Kickstart your career with Reezume generator!",
 };
 
 export default function RootLayout({
@@ -19,6 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="src/app/page.tsx" />
+      </head>
       <body className={inter.className}>
         <Theme>{children}</Theme>
       </body>

@@ -3,9 +3,10 @@ import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
-export async function createPersonalData(formData: FormData) {
+export async function createPersonalData(formData: FormData, cvUuid: string) {
   const schema = z.object({
     name: z.string(),
+    cvUuid: z.string(),
     profession: z.string(),
     location: z.string(),
     email: z.string(),
@@ -17,6 +18,7 @@ export async function createPersonalData(formData: FormData) {
 
   const parsedForm = schema.parse({
     name: formData.get("name"),
+    cvUuid,
     profession: formData.get("profession"),
     location: formData.get("location"),
     email: formData.get("email"),
@@ -24,12 +26,22 @@ export async function createPersonalData(formData: FormData) {
     summary: formData.get("summary"),
   });
 
-  await prisma.personalInformation.create({ data: parsedForm });
+  await prisma.personalInformation.upsert({
+    where: {
+      cvUuid,
+    },
+    update: {
+      ...parsedForm,
+    },
+    create: {
+      ...parsedForm,
+    },
+  });
 
-  redirect("/form/professionalExperience");
+  redirect(`form/professionalExperience`);
 }
 
-export async function getPersonalData() {
+export async function getPersonalData(cvUuid: string) {
   const prisma = new PrismaClient();
-  return prisma.personalInformation.findFirst();
+  return prisma.personalInformation.findUnique({ where: { cvUuid } });
 }

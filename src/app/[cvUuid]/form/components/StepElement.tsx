@@ -2,58 +2,54 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function StepElement({
   children,
   isActive,
-  onClick,
+  href,
 }: {
   children: React.ReactNode;
   isActive: boolean;
-  onClick: () => void;
+  href: string;
 }) {
   const styles =
     "hover:cursor-pointer w-12 h-12 py-3 bg-rose-400 rounded-[999px] border border-zinc-200 justify-center items-center inline-flex";
 
   return (
-    <div
-      onClick={onClick}
+    <Link
+      href={href}
       className={`${styles} ${isActive ? "" : "bg-opacity-60"}`}
     >
       {children}
-    </div>
+    </Link>
   );
 }
 
-export default function Stepper() {
-  const router = useRouter();
+export default function Stepper({ cvUuid }: { cvUuid: string }) {
   const pathname = usePathname();
-
-  const goToStepOne = () => router.push("/form");
-  const goToStepTwo = () => router.push("/form/professionalExperience");
-  const goToStepThree = () => router.push("/form/educationData");
-  const goToStepFour = () => router.push("/form/additionalData");
+  const basePath = `/${cvUuid}/form`;
 
   return (
     <div className="flex justify-between pt-36 w-72 text-white font-bold drop-shadow-lg">
-      <StepElement onClick={goToStepOne} isActive={pathname === "/form"}>
+      <StepElement href={basePath} isActive={pathname === basePath}>
         1
       </StepElement>
       <StepElement
-        onClick={goToStepTwo}
-        isActive={pathname === "/form/professionalExperience"}
+        href={`${basePath}/professionalExperience`}
+        isActive={pathname.includes(`${basePath}/professionalExperience`)}
       >
         2
       </StepElement>
       <StepElement
-        onClick={goToStepThree}
-        isActive={pathname === "/form/educationData"}
+        href={`${basePath}/educationData`}
+        isActive={pathname.includes(`${basePath}/educationData`)}
       >
         3
       </StepElement>
       <StepElement
-        onClick={goToStepFour}
-        isActive={pathname === "/form/additionalData"}
+        href={`${basePath}/additionalData`}
+        isActive={pathname.includes(`${basePath}/additionalData`)}
       >
         4
       </StepElement>

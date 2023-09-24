@@ -6,11 +6,13 @@ import Image from "next/image";
 import ReezumeLogo from "../../public/logo_reezume.jpg";
 import HeroImage1 from "../../public/Image1.png";
 import HeroImage2 from "../../public/ser-feliz-en-el-trabajo.jpg";
+import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
-  const navigateToForm = () => router.push("/form");
+  const cvUuid = uuidv4();
+  const navigateToForm = () => router.push(`/${cvUuid}/form`);
 
   return (
     /* Navbar */
