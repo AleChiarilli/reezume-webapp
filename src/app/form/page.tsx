@@ -1,11 +1,16 @@
 "use client";
 import * as Form from "@radix-ui/react-form";
+import { useRouter } from "next/navigation";
 
 export default function GetStartedStep() {
+  const router = useRouter();
+  const navigateToProfessionalExperience = () =>
+    router.push("form/professionalExperience");
+
   return (
     <div className="flex flex-col justify-center align-middle">
       <div className="w-56 mt-5 text-white text-base font-normal leading-relaxed">
-        Let´s start with basics...
+        Lets start with basics...
       </div>
       <div className="w-60 text-white text-xl font-bold">
         Personal information
@@ -90,7 +95,10 @@ export default function GetStartedStep() {
           </Form.Control>
         </Form.Field>
         <Form.Submit asChild>
-          <button className="box-border w-full bg-violet-500 text-white shadow-blackA7 hover:bg-violet-400 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]">
+          <button
+            onClick={navigateToProfessionalExperience}
+            className="box-border w-full bg-violet-500 text-white shadow-blackA7 hover:bg-violet-400 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]"
+          >
             Next
           </button>
         </Form.Submit>

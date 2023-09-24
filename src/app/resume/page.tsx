@@ -14,10 +14,10 @@ export default function Resume() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect width="15" height="15" fill="white" fill-opacity="0.01" />
+              <rect width="15" height="15" fill="white" fillOpacity="0.01" />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M1 2C0.447715 2 0 2.44772 0 3V12C0 12.5523 0.447715 13 1 13H14C14.5523 13 15 12.5523 15 12V3C15 2.44772 14.5523 2 14 2H1ZM1 3H14V3.92494C13.9174 3.92486 13.8338 3.94751 13.7589 3.99505L7.5 7.96703L1.24112 3.99505C1.16621 3.94751 1.0826 3.92486 1 3.92494V3ZM1 4.90797V12H14V4.90797L7.74112 8.87995C7.59394 8.97335 7.40606 8.97335 7.25888 8.87995L1 4.90797Z"
                 fill="#5EB0EF"
               />
@@ -32,10 +32,10 @@ export default function Resume() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect width="15" height="15" fill="white" fill-opacity="0.01" />
+              <rect width="15" height="15" fill="white" fillOpacity="0.01" />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M10 3.5C10 4.70948 9.14112 5.71836 8 5.94999V13.5C8 13.7761 7.77614 14 7.5 14C7.22386 14 7 13.7761 7 13.5V5.94999C5.85888 5.71836 5 4.70948 5 3.5C5 2.11929 6.11929 1 7.5 1C8.88071 1 10 2.11929 10 3.5Z"
                 fill="#5EB0EF"
               />
@@ -50,10 +50,10 @@ export default function Resume() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect width="15" height="15" fill="white" fill-opacity="0.01" />
+              <rect width="15" height="15" fill="white" fillOpacity="0.01" />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M7.5 0.875C5.49797 0.875 3.875 2.49797 3.875 4.5C3.875 6.15288 4.98124 7.54738 6.49373 7.98351C5.2997
                 8.12901 4.27557 8.55134 3.50407 9.31167C2.52216 10.2794 2.02502 11.72 2.02502 13.5999C2.02502 13.8623 2.23769
                 14.0749 2.50002 14.0749C2.76236 14.0749 2.97502 13.8623 2.97502 13.5999C2.97502 11.8799 3.42786 10.7206 4.17091

@@ -1,7 +1,10 @@
 "use client";
 import * as Form from "@radix-ui/react-form";
+import { useRouter } from "next/navigation";
 
-export default function professionalExperience() {
+export default function ProfessionalExperience() {
+  const router = useRouter();
+  const navigateToEducation = () => router.push("/form/educationData");
   return (
     <div className="flex flex-col justify-center align-middle">
       <div className="w-56 mt-5 text-white text-base font-normal leading-relaxed">
@@ -69,7 +72,10 @@ export default function professionalExperience() {
             Add another
           </button>
           <Form.Submit asChild>
-            <button className="box-border bg-violet-500 text-white shadow-blackA7 hover:bg-violet-400 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]">
+            <button
+              onClick={navigateToEducation}
+              className="box-border bg-violet-500 text-white shadow-blackA7 hover:bg-violet-400 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]"
+            >
               Next
             </button>
           </Form.Submit>
