@@ -1,5 +1,5 @@
 "use server";
-import { redirect } from "next/navigation";
+import { RedirectType, redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
 import { ProfessionalExperiences } from "./professionalExperience/components/ProfessionalExperienceForm";
@@ -191,8 +191,10 @@ export async function updateAdditionalData(formData: FormData, cvUuid: string) {
     shortPresentation: formData.get("short-presentation"),
   });
 
-  return prisma.personalInformation.update({
+  await prisma.personalInformation.update({
     where: { cvUuid },
     data: parsedData,
   });
+
+  redirect(`/${cvUuid}/resume`);
 }
