@@ -20,6 +20,7 @@ model PersonalInformation {
   email       String                   @unique
   phoneNumber String?
   summary     String?
+  hobbies     String?
   createdAt   DateTime                 @default(now())
   updatedAt   DateTime                 @updatedAt
   experiences ProfessionalExperience[]

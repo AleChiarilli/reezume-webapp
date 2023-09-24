@@ -7,6 +7,10 @@ import { EducationData } from "./educationData/components/EducationDataForm";
 
 const prisma = new PrismaClient();
 
+export async function getPersonalData(cvUuid: string) {
+  return prisma.personalInformation.findUnique({ where: { cvUuid } });
+}
+
 export async function createPersonalData(formData: FormData, cvUuid: string) {
   const schema = z.object({
     name: z.string(),
@@ -55,10 +59,6 @@ export async function createPersonalData(formData: FormData, cvUuid: string) {
   });
 
   redirect(`form/professionalExperience`);
-}
-
-export async function getPersonalData(cvUuid: string) {
-  return prisma.personalInformation.findUnique({ where: { cvUuid } });
 }
 
 export async function getProfessionalExperiences(cvUuid: string) {
