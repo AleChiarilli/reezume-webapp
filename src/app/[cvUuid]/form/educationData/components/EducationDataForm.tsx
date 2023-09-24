@@ -18,6 +18,7 @@ function EducationDataFormFields({ data }: { data: EducationData[0] }) {
             type="text"
             required
             placeholder="Degree, bachelor, certificates... "
+            defaultValue={data.degree}
           />
         </Form.Control>
       </Form.Field>
@@ -31,6 +32,7 @@ function EducationDataFormFields({ data }: { data: EducationData[0] }) {
             type="text"
             required
             placeholder="University of Florida"
+            defaultValue={data.institution}
           />
         </Form.Control>
       </Form.Field>
@@ -43,6 +45,7 @@ function EducationDataFormFields({ data }: { data: EducationData[0] }) {
             className="box-border bg-transparent shadow-white inline-flex w-full h-[35px] appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white"
             type="date"
             required
+            defaultValue={data.graduationDate.toISOString().split("T")[0]}
           />
         </Form.Control>
       </Form.Field>
@@ -63,6 +66,7 @@ export default function EducationDataForm({
     createEducationData(cvUuid);
     router.refresh();
   };
+
   return (
     <>
       <Form.Root>
@@ -71,7 +75,13 @@ export default function EducationDataForm({
         ))}
 
         <div className="flex justify-between">
-          <button className="box-border bg-gray-400 text-white shadow-blackA7 hover:bg-gray-300 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              addEducation();
+            }}
+            className="box-border bg-gray-400 text-white shadow-blackA7 hover:bg-gray-300 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]"
+          >
             Add another
           </button>
           <Form.Submit asChild>
