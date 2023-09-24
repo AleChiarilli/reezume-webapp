@@ -35,6 +35,17 @@ export async function createPersonalData(formData: FormData, cvUuid: string) {
     },
     create: {
       ...parsedForm,
+      experiences: {
+        createMany: {
+          data: [
+            {
+              title: "",
+              company: "",
+              startDate: new Date(),
+            },
+          ],
+        },
+      },
     },
   });
 
@@ -44,4 +55,15 @@ export async function createPersonalData(formData: FormData, cvUuid: string) {
 export async function getPersonalData(cvUuid: string) {
   const prisma = new PrismaClient();
   return prisma.personalInformation.findUnique({ where: { cvUuid } });
+}
+
+export async function getProfessionalExperiences(cvUuid: string) {
+  const prisma = new PrismaClient();
+  return prisma.professionalExperience.findMany({
+    where: {
+      personalInfo: {
+        cvUuid,
+      },
+    },
+  });
 }
