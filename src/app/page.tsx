@@ -1,6 +1,5 @@
 "use client";
 import * as Toolbar from "@radix-ui/react-toolbar";
-import * as Switch from "@radix-ui/react-switch";
 import { Button } from "@radix-ui/themes";
 import Image from "next/image";
 import ReezumeLogo from "../../public/logo_reezume.jpg";
@@ -30,22 +29,8 @@ export default function Home() {
         <div className="text-rose-500 p-[10px] self-center font-semibold text-2xl mr-10 ">
           Reezume
         </div>
-        <div className="flex items-center mt-4">
-          <label
-            className="text-rose-500  leading-none pr-[15px]"
-            htmlFor="airplane-mode"
-          >
-            Switch mode
-          </label>
-          <Switch.Root
-            className="w-[42px] h-[25px]  bg-blackA9 rounded-full relative shadow-[0_2px_10px] shadow-blackA7 focus:shadow-[0_0_0_2px] focus:shadow-black data-[state=checked]:bg-black outline-none cursor-default"
-            id="airplane-mode"
-          >
-            <Switch.Thumb className="block w-[21px] h-[21px] bg-white rounded-full shadow-[0_2px_2px] shadow-blackA7 transition-transform duration-100 translate-x-0.5 will-change-transform data-[state=checked]:translate-x-[19px]" />
-          </Switch.Root>
-        </div>
         <Toolbar.Button
-          className="mx-[100px] text-white bg-rose-500 mt-2 font-medium flex-shrink-0 flex-grow-0 basis-auto h-[40px] w-[140px] rounded inline-flex text-[13px] leading-none items-center justify-center outline-none hover:bg-rose-400 focus:relative focus:shadow-[0_0_0_2px] focus:shadow-violet7"
+          className="mx-[100px] hover:cursor-pointer text-white bg-rose-500 mt-2 font-medium flex-shrink-0 flex-grow-0 basis-auto h-[40px] w-[140px] rounded inline-flex text-[13px] leading-none items-center justify-center outline-none hover:bg-rose-400 focus:relative focus:shadow-[0_0_0_2px] focus:shadow-violet7"
           style={{ marginLeft: "auto" }}
           onClick={navigateToForm}
         >
@@ -62,7 +47,12 @@ export default function Home() {
               <b>Start writing your resume.</b>
             </p>
             <div className="w-2/3">
-              <Button size="4" color="ruby" onClick={navigateToForm}>
+              <Button
+                className="hover:cursor-pointer"
+                size="4"
+                color="ruby"
+                onClick={navigateToForm}
+              >
                 Create now
               </Button>
             </div>
@@ -97,7 +87,12 @@ export default function Home() {
               <b>Create your resume in minutes.</b>
             </p>
             <div className="w-2/3">
-              <Button size="4" color="ruby" onClick={navigateToForm}>
+              <Button
+                className="hover:cursor-pointer"
+                size="4"
+                color="ruby"
+                onClick={navigateToForm}
+              >
                 Create now
               </Button>
             </div>
