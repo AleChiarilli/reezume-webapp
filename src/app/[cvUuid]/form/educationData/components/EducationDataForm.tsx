@@ -1,13 +1,14 @@
 "use client";
 import * as Form from "@radix-ui/react-form";
-import { getEducationData } from "../../actions";
+import { createEducationData, getEducationData } from "../../actions";
+import { useRouter } from "next/navigation";
 
 export type EducationData = Awaited<ReturnType<typeof getEducationData>>;
 
 function EducationDataFormFields({ data }: { data: EducationData[0] }) {
   return (
     <>
-      <Form.Field name={`${data.id}-title`} className="pt-6 pb-5">
+      <Form.Field name={`${data.id}-degree`} className="pt-6 pb-5">
         <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
           Title
         </Form.Label>
@@ -33,21 +34,9 @@ function EducationDataFormFields({ data }: { data: EducationData[0] }) {
           />
         </Form.Control>
       </Form.Field>
-      <Form.Field name={`${data.id}-start-date`} className="pb-2">
+      <Form.Field name={`${data.id}-graduation-date`} className="pb-2">
         <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
-          Start Date
-        </Form.Label>
-        <Form.Control asChild>
-          <input
-            className="box-border bg-transparent shadow-white inline-flex w-full h-[35px] appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white"
-            type="date"
-            required
-          />
-        </Form.Control>
-      </Form.Field>
-      <Form.Field name={`${data.id}-end-date`} className="pb-5">
-        <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
-          End Date
+          Graduation Date
         </Form.Label>
         <Form.Control asChild>
           <input
@@ -68,6 +57,12 @@ export default function EducationDataForm({
   educationData: EducationData;
   cvUuid: string;
 }) {
+  const router = useRouter();
+
+  const addEducation = () => {
+    createEducationData(cvUuid);
+    router.refresh();
+  };
   return (
     <>
       <Form.Root>

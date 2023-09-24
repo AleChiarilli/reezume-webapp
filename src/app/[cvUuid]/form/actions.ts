@@ -37,14 +37,17 @@ export async function createPersonalData(formData: FormData, cvUuid: string) {
     create: {
       ...parsedForm,
       experiences: {
-        createMany: {
-          data: [
-            {
-              position: "",
-              company: "",
-              startDate: new Date(),
-            },
-          ],
+        create: {
+          position: "",
+          company: "",
+          startDate: new Date(),
+        },
+      },
+      education: {
+        create: {
+          degree: "",
+          institution: "",
+          graduationDate: new Date(),
         },
       },
     },
@@ -123,6 +126,21 @@ export async function getEducationData(cvUuid: string) {
     where: {
       personalInfo: {
         cvUuid,
+      },
+    },
+  });
+}
+
+export async function createEducationData(cvUuid: string) {
+  return prisma.personalInformation.update({
+    where: { cvUuid },
+    data: {
+      education: {
+        create: {
+          degree: "",
+          institution: "",
+          graduationDate: new Date(),
+        },
       },
     },
   });
