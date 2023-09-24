@@ -1,13 +1,19 @@
 "use client";
 import * as Form from "@radix-ui/react-form";
-import { getPersonalData } from "../../actions";
+import { getPersonalData, updateAdditionalData } from "../../actions";
 
 export type PersonalData = Awaited<ReturnType<typeof getPersonalData>>;
 
-export default function AdditionalDataForm({ data }: { data: PersonalData }) {
+export default function AdditionalDataForm({
+  data,
+  cvUuid,
+}: {
+  data: PersonalData;
+  cvUuid: string;
+}) {
   return (
     <>
-      <Form.Root>
+      <Form.Root action={(formData) => updateAdditionalData(formData, cvUuid)}>
         <Form.Field name="hobbies" className="pt-6 pb-5">
           <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
             Hobbies
@@ -32,7 +38,7 @@ export default function AdditionalDataForm({ data }: { data: PersonalData }) {
               type="text"
               required
               placeholder="What moves you on?"
-              defaultValue={data?.summary ?? ""}
+              defaultValue={data?.shortPresentation ?? ""}
             />
           </Form.Control>
         </Form.Field>

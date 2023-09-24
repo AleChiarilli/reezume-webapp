@@ -179,3 +179,20 @@ export async function bulkUpdateEducation(
   await Promise.allSettled(updates);
   redirect(`additionalData`);
 }
+
+export async function updateAdditionalData(formData: FormData, cvUuid: string) {
+  const schema = z.object({
+    hobbies: z.string(),
+    shortPresentation: z.string(),
+  });
+
+  const parsedData = schema.parse({
+    hobbies: formData.get("hobbies"),
+    shortPresentation: formData.get("short-presentation"),
+  });
+
+  return prisma.personalInformation.update({
+    where: { cvUuid },
+    data: parsedData,
+  });
+}

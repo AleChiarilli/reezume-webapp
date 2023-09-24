@@ -13,7 +13,7 @@ export default async function additionalData({
       <div className="w-56 mt-5 text-white text-base font-normal leading-relaxed">
         Tell about the person behind the screen...
       </div>
-      <AdditionalDataForm data={data} />
+      <AdditionalDataForm data={data} cvUuid={params.cvUuid} />
     </div>
   );
 }
