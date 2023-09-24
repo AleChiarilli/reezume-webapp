@@ -1,12 +1,8 @@
 "use client";
 import * as Form from "@radix-ui/react-form";
-import { useRouter } from "next/navigation";
+import createPersonalData from "./actions";
 
 export default function GetStartedStep() {
-  const router = useRouter();
-  const navigateToProfessionalExperience = () =>
-    router.push("form/professionalExperience");
-
   return (
     <div className="flex flex-col justify-center align-middle">
       <div className="w-56 mt-5 text-white text-base font-normal leading-relaxed">
@@ -15,7 +11,7 @@ export default function GetStartedStep() {
       <div className="w-60 text-white text-xl font-bold">
         Personal information
       </div>
-      <Form.Root>
+      <Form.Root action={createPersonalData}>
         <Form.Field name="name" className="pt-6 2">
           <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
             Name
@@ -95,10 +91,7 @@ export default function GetStartedStep() {
           </Form.Control>
         </Form.Field>
         <Form.Submit asChild>
-          <button
-            onClick={navigateToProfessionalExperience}
-            className="box-border w-full bg-violet-500 text-white shadow-blackA7 hover:bg-violet-400 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]"
-          >
+          <button className="box-border w-full bg-violet-500 text-white shadow-blackA7 hover:bg-violet-400 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]">
             Next
           </button>
         </Form.Submit>
