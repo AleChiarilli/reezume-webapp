@@ -20,6 +20,7 @@ export default async function ProfessionalExperience({
       </div>
       <ProfessionalExperienceForm
         professionalExperiences={professionalExperiences}
+        cvUuid={params.cvUuid}
       />
     </div>
   );

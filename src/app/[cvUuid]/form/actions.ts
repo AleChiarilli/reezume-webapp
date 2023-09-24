@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
+const prisma = new PrismaClient();
+
 export async function createPersonalData(formData: FormData, cvUuid: string) {
   const schema = z.object({
     name: z.string(),
@@ -13,8 +15,6 @@ export async function createPersonalData(formData: FormData, cvUuid: string) {
     phoneNumber: z.string(),
     summary: z.string(),
   });
-
-  const prisma = new PrismaClient();
 
   const parsedForm = schema.parse({
     name: formData.get("name"),
@@ -53,16 +53,29 @@ export async function createPersonalData(formData: FormData, cvUuid: string) {
 }
 
 export async function getPersonalData(cvUuid: string) {
-  const prisma = new PrismaClient();
   return prisma.personalInformation.findUnique({ where: { cvUuid } });
 }
 
 export async function getProfessionalExperiences(cvUuid: string) {
-  const prisma = new PrismaClient();
   return prisma.professionalExperience.findMany({
     where: {
       personalInfo: {
         cvUuid,
+      },
+    },
+  });
+}
+
+export async function createProfessionalExperience(cvUuid: string) {
+  return prisma.personalInformation.update({
+    where: { cvUuid },
+    data: {
+      experiences: {
+        create: {
+          title: "",
+          company: "",
+          startDate: new Date(),
+        },
       },
     },
   });

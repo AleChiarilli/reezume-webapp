@@ -1,7 +1,10 @@
 "use client";
 import * as Form from "@radix-ui/react-form";
-import { useState } from "react";
-import { getProfessionalExperiences } from "../../actions";
+import {
+  createProfessionalExperience,
+  getProfessionalExperiences,
+} from "../../actions";
+import { useRouter } from "next/navigation";
 
 type ProfessionalExperiences = Awaited<
   ReturnType<typeof getProfessionalExperiences>
@@ -12,7 +15,6 @@ function ProfessionalExperienceFormFields({
 }: {
   data: ProfessionalExperiences[0];
 }) {
-  // TODO: Agregar ID de la experiencia a cada campo
   return (
     <>
       <Form.Field name="position" className="pt-6 pb-5">
@@ -29,7 +31,7 @@ function ProfessionalExperienceFormFields({
           />
         </Form.Control>
       </Form.Field>
-      <Form.Field name="Company" className="pb-5">
+      <Form.Field name="company" className="pb-5">
         <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
           Company
         </Form.Label>
@@ -75,9 +77,18 @@ function ProfessionalExperienceFormFields({
 
 export default function ProfessionalExperienceForm({
   professionalExperiences,
+  cvUuid,
 }: {
   professionalExperiences: ProfessionalExperiences;
+  cvUuid: string;
 }) {
+  const router = useRouter();
+
+  const addExperience = () => {
+    createProfessionalExperience(cvUuid);
+    router.refresh();
+  };
+
   return (
     <>
       <Form.Root>
@@ -89,7 +100,10 @@ export default function ProfessionalExperienceForm({
         ))}
         {/* Form Buttons */}
         <div className="flex justify-between">
-          <button className="box-border bg-gray-400 text-white shadow-blackA7 hover:bg-gray-300 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]">
+          <button
+            onClick={addExperience}
+            className="box-border bg-gray-400 text-white shadow-blackA7 hover:bg-gray-300 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]"
+          >
             Add another
           </button>
           <Form.Submit asChild>
