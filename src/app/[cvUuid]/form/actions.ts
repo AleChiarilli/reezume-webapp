@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
 import { ProfessionalExperiences } from "./professionalExperience/components/ProfessionalExperienceForm";
+import { EducationData } from "./educationData/components/EducationDataForm";
 
 const prisma = new PrismaClient();
 
@@ -144,4 +145,37 @@ export async function createEducationData(cvUuid: string) {
       },
     },
   });
+}
+
+export async function bulkUpdateEducation(
+  formData: FormData,
+  educationData: EducationData
+) {
+  const schema = z.object({
+    degree: z.string(),
+    institution: z.string(),
+    graduationDate: z.string(),
+  });
+
+  const updatedEducation = educationData.map((pe) => {
+    const parsedData = schema.parse({
+      degree: formData.get(`${pe.id}-degree`),
+      institution: formData.get(`${pe.id}-institution`),
+      graduationDate: formData.get(`${pe.id}-graduation-date`),
+    });
+
+    return {
+      degree: parsedData.degree,
+      institution: parsedData.institution,
+      graduationDate: new Date(parsedData.graduationDate),
+      id: pe.id,
+    };
+  });
+
+  const updates = updatedEducation.map((pe) =>
+    prisma.education.update({ where: { id: pe.id }, data: pe })
+  );
+
+  await Promise.allSettled(updates);
+  redirect(`additionalData`);
 }

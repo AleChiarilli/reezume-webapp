@@ -1,6 +1,10 @@
 "use client";
 import * as Form from "@radix-ui/react-form";
-import { createEducationData, getEducationData } from "../../actions";
+import {
+  bulkUpdateEducation,
+  createEducationData,
+  getEducationData,
+} from "../../actions";
 import { useRouter } from "next/navigation";
 
 export type EducationData = Awaited<ReturnType<typeof getEducationData>>;
@@ -69,7 +73,9 @@ export default function EducationDataForm({
 
   return (
     <>
-      <Form.Root>
+      <Form.Root
+        action={(formData) => bulkUpdateEducation(formData, educationData)}
+      >
         {educationData.map((data) => (
           <EducationDataFormFields key={data.id} data={data} />
         ))}
