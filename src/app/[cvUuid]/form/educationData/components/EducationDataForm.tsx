@@ -1,7 +1,16 @@
 "use client";
 import * as Form from "@radix-ui/react-form";
+import { getEducationData } from "../../actions";
 
-export default function EducationDataForm() {
+export type EducationData = Awaited<ReturnType<typeof getEducationData>>;
+
+export default function EducationDataForm({
+  educationData,
+  cvUuid,
+}: {
+  educationData: EducationData;
+  cvUuid: string;
+}) {
   return (
     <>
       <Form.Root>

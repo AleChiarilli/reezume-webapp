@@ -6,7 +6,6 @@ import {
   getProfessionalExperiences,
 } from "../../actions";
 import { useRouter } from "next/navigation";
-import { MouseEventHandler } from "react";
 
 export type ProfessionalExperiences = Awaited<
   ReturnType<typeof getProfessionalExperiences>
